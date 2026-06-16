@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Resource Include="Assets\logo.png" />
-    <Resource Include="Assets\Elegance_Developer_Logo.png" />
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

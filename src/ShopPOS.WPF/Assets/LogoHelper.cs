@@ -7,7 +7,6 @@ namespace ShopPOS.WPF.Assets;
 public static class LogoHelper
 {
     public const string PackUri = "pack://application:,,,/Assets/logo.png";
-    public const string DeveloperLogoPackUri = "pack://application:,,,/Assets/Elegance_Developer_Logo.png";
     public const string RelativeOutputPath = "Assets/logo.png";
 
     public static string[] GetCandidatePaths(PosHardwareOptions? hardwareOptions = null)
@@ -16,7 +15,6 @@ public static class LogoHelper
         return
         [
             configured ?? string.Empty,
-            @"C:\Users\HD\OneDrive\Attachments\OneDrive\Desktop\logo\logo.png",
             Path.Combine(AppContext.BaseDirectory, RelativeOutputPath)
         ];
     }

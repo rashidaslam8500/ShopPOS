@@ -9,38 +9,6 @@
         ShowInTaskbar="False"
         Topmost="True"
         ResizeMode="NoResize">
-    <Window.Resources>
-        <Storyboard x:Key="DeveloperLogoEntranceStoryboard">
-            <DoubleAnimation Storyboard.TargetName="DeveloperLogo"
-                             Storyboard.TargetProperty="Opacity"
-                             From="0"
-                             To="1"
-                             Duration="0:0:0.8">
-                <DoubleAnimation.EasingFunction>
-                    <CubicEase EasingMode="EaseOut"/>
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="DeveloperLogoScale"
-                             Storyboard.TargetProperty="ScaleX"
-                             From="0.5"
-                             To="1"
-                             Duration="0:0:0.8">
-                <DoubleAnimation.EasingFunction>
-                    <CubicEase EasingMode="EaseOut"/>
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="DeveloperLogoScale"
-                             Storyboard.TargetProperty="ScaleY"
-                             From="0.5"
-                             To="1"
-                             Duration="0:0:0.8">
-                <DoubleAnimation.EasingFunction>
-                    <CubicEase EasingMode="EaseOut"/>
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-        </Storyboard>
-    </Window.Resources>
-
     <Grid Margin="40,32">
         <Viewbox Stretch="Uniform"
                  StretchDirection="DownOnly"
@@ -88,21 +56,8 @@
                            HorizontalAlignment="Center"
                            TextAlignment="Center"
                            TextWrapping="Wrap"
-                           MinHeight="56"/>
-
-                <Image x:Name="DeveloperLogo"
-                       Source="/Assets/Elegance_Developer_Logo.png"
-                       Width="440"
-                       Height="440"
-                       Stretch="Uniform"
-                       HorizontalAlignment="Center"
-                       Margin="0,36,0,0"
-                       Opacity="0"
-                       RenderTransformOrigin="0.5,0.5">
-                    <Image.RenderTransform>
-                        <ScaleTransform x:Name="DeveloperLogoScale" ScaleX="0.5" ScaleY="0.5"/>
-                    </Image.RenderTransform>
-                </Image>
+                           MinHeight="56"
+                           Margin="0,36,0,0"/>
             </StackPanel>
             </StackPanel>
         </Viewbox>
