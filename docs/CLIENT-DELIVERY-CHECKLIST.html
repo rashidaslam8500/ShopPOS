@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <title>KitchenMart POS — Client Delivery Checklist</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      color: #1a2332;
+      line-height: 1.45;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 24px;
+      font-size: 11pt;
+    }
+    h1 { font-size: 20pt; margin: 0 0 4px; color: #1e3a5f; }
+    h2 {
+      font-size: 13pt;
+      color: #1e3a5f;
+      border-bottom: 2px solid #2f80ed;
+      padding-bottom: 4px;
+      margin: 22px 0 10px;
+      page-break-after: avoid;
+    }
+    h3 { font-size: 11pt; margin: 14px 0 6px; color: #334; }
+    .meta {
+      background: #f4f7fb;
+      border: 1px solid #dbe3ee;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin: 12px 0 20px;
+      font-size: 10pt;
+    }
+    .meta table { width: 100%; border-collapse: collapse; }
+    .meta td { padding: 3px 8px 3px 0; vertical-align: top; }
+    .meta td:first-child { font-weight: 600; width: 130px; color: #5c6b7a; }
+    .note {
+      background: #fff8e6;
+      border-left: 4px solid #e67e22;
+      padding: 10px 12px;
+      margin: 12px 0;
+      font-size: 10pt;
+    }
+    ul.checklist { list-style: none; padding: 0; margin: 0; }
+    ul.checklist li {
+      padding: 5px 0 5px 28px;
+      position: relative;
+      border-bottom: 1px dotted #e0e6ed;
+    }
+    ul.checklist li:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 14px;
+      height: 14px;
+      border: 2px solid #2f80ed;
+      border-radius: 3px;
+    }
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 14px;
+      font-size: 10pt;
+    }
+    table.data th, table.data td {
+      border: 1px solid #dbe3ee;
+      padding: 7px 9px;
+      text-align: left;
+    }
+    table.data th { background: #1e3a5f; color: #fff; }
+    table.data tr:nth-child(even) { background: #f9fbfd; }
+    .footer {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid #dbe3ee;
+      font-size: 9pt;
+      color: #5c6b7a;
+      text-align: center;
+    }
+    .sign-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      page-break-inside: avoid;
+    }
+    .sign-box {
+      flex: 1;
+      border-top: 1px solid #333;
+      padding-top: 6px;
+      font-size: 10pt;
+    }
+    @media print {
+      body { padding: 0; }
+      h2 { page-break-after: avoid; }
+      ul.checklist li { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>KitchenMart.pk POS — Client Delivery Checklist</h1>
+  <p style="margin:0;color:#5c6b7a;">Bhai Gee Crockery Store · Complete handover guide · Save as PDF: Ctrl+P → Save as PDF</p>
+
+  <div class="meta">
+    <table>
+      <tr><td>Client</td><td>Bhai (Bhai Gee Crockery Store)</td></tr>
+      <tr><td>Location</td><td>Karkhana Bazar, Sargodha</td></tr>
+      <tr><td>Project</td><td>ShopPOS WPF + Cloud API (optional)</td></tr>
+      <tr><td>Developer</td><td>________________________________</td></tr>
+      <tr><td>Delivery date</td><td>________________________________</td></tr>
+      <tr><td>Version</td><td>v1.0</td></tr>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>Note:</strong> Existing shop data (products, sales, customers) rakhen — client ne verify kar liya hai.
+    Is checklist mein sirf woh kaam hain jo delivery / install / handover ke liye zaroori hain.
+  </div>
+
+  <h2>Phase 1 — Release build banana (apne PC par)</h2>
+  <ul class="checklist">
+    <li>POS app Release publish: <code>dotnet publish src\ShopPOS.WPF\ShopPOS.WPF.csproj -c Release -o publish\ClientPOS</code></li>
+    <li>Cloud API Release publish (optional): <code>dotnet publish src\ShopPOS.Api\ShopPOS.Api.csproj -c Release -o publish\ClientCloudApi</code></li>
+    <li>Publish folder mein <code>ShopPOS.WPF.exe</code> run karke final test</li>
+    <li>Debug build client ko na den — sirf Release / publish folder</li>
+    <li>Source code dena hai ya sirf EXE — client se clear karo aur note karo</li>
+  </ul>
+
+  <h2>Phase 2 — appsettings.json client-ready</h2>
+  <ul class="checklist">
+    <li><strong>ConnectionStrings</strong> — client PC ke SQL Server / LocalDB ke mutabiq set</li>
+    <li><strong>Hardware:LogoPath</strong> — client logo ka sahi path (OneDrive / dev path hatao)</li>
+    <li><strong>Hardware:ThermalPrinterName</strong> — shop printer ka naam (agar thermal hai)</li>
+    <li><strong>CloudSync:ApiBaseUrl</strong> — localhost ya client server URL</li>
+    <li><strong>CloudSync:ApiKey</strong> — strong naya key (dev key client ko mat do)</li>
+    <li><strong>CloudSync:ShopId</strong> — kitchenmart-sargodha verify</li>
+    <li>SMS / WhatsApp / Email — disabled rakho jab tak client credentials na de</li>
+  </ul>
+
+  <h3>Sample connection strings</h3>
+  <table class="data">
+    <tr><th>Type</th><th>Connection string</th></tr>
+    <tr><td>LocalDB</td><td>Server=(localdb)\MSSQLLocalDB;Database=BhaiGeePOS;Trusted_Connection=True;</td></tr>
+    <tr><td>SQL Express</td><td>Server=.\SQLEXPRESS;Database=BhaiGeePOS;Trusted_Connection=True;TrustServerCertificate=True;</td></tr>
+  </table>
+
+  <h2>Phase 3 — Security (zaroori)</h2>
+  <ul class="checklist">
+    <li>Owner login: <code>owner</code> — password <strong>owner123 se badal kar</strong> naya set karo</li>
+    <li>Sales login: <code>sales</code> — password <strong>sales123 se badal kar</strong> naya set karo</li>
+    <li>Settings → Change Password (owner account)</li>
+    <li>Settings → Security Questions save karwao (Forgot Password ke liye)</li>
+    <li>Naye passwords alag sealed note / envelope mein client ko do</li>
+    <li>Default passwords (owner123 / sales123) client ko kabhi mat batao written slip par</li>
+  </ul>
+
+  <h2>Phase 4 — Shop settings verify</h2>
+  <ul class="checklist">
+    <li>Shop Name — Bhai Gee Crockery Store / KitchenMart.pk</li>
+    <li>Address — Karkhana Bazar, Sargodha</li>
+    <li>Phone — shop number sahi</li>
+    <li>Currency — Rs.</li>
+    <li>Tax rate — client ke mutabiq</li>
+    <li>Receipt footer message — thank you / return policy text</li>
+    <li>Settings → Save Shop Settings → “Settings Saved” popup aaye</li>
+  </ul>
+
+  <h2>Phase 5 — Full functional test (client machine jaisa)</h2>
+  <ul class="checklist">
+    <li>Owner login + salesman login dono test</li>
+    <li>Billing — search, cart, discount, payment, receipt</li>
+    <li>Customer mobile / email (optional fields) test</li>
+    <li>Receipt print (printer connected ho to)</li>
+    <li>Inventory — product edit + save (tracking error fix verify)</li>
+    <li>Returns — original price par refund</li>
+    <li>Sales Report — aaj ki sales dikhe</li>
+    <li>Dashboard — totals sahi</li>
+    <li>Audit Logs — actions log ho rahe hon</li>
+    <li>App band karke dubara kholo — data save hai</li>
+    <li>PC restart ke baad app + data OK</li>
+  </ul>
+
+  <h2>Phase 6 — Cloud sync (optional — agar dena ho)</h2>
+  <ul class="checklist">
+    <li>ShopPOS.Api (<code>ClientCloudApi</code>) client PC par copy</li>
+    <li>API startup shortcut / task scheduler (shop khulte hi chale)</li>
+    <li>Settings → Cloud Sync ON → URL + API Key + Shop ID save</li>
+    <li>Sync Now — “Synced X sale(s)…” message</li>
+    <li>Browser: http://localhost:5050 — dashboard sales/stock dikhe</li>
+    <li>Phone same WiFi: http://[PC-IP]:5050 test (optional)</li>
+    <li>Client ko samjhao: API band ho to sync ruke, local data safe rahega</li>
+  </ul>
+
+  <h2>Phase 7 — Client PC install</h2>
+  <ul class="checklist">
+    <li>Windows 10 ya 11</li>
+    <li>.NET 10 Desktop Runtime install</li>
+    <li>SQL Server Express ya LocalDB install + running</li>
+    <li><code>ClientPOS</code> folder copy (USB / network)</li>
+    <li>Logo file sahi folder mein</li>
+    <li>Pehli run — database auto create (EnsureCreated)</li>
+    <li>Desktop shortcut: ShopPOS.WPF.exe</li>
+    <li>Thermal printer driver (agar hai)</li>
+    <li>Barcode scanner USB test</li>
+  </ul>
+
+  <h2>Phase 8 — Client ko denay wali cheezen (package)</h2>
+  <ul class="checklist">
+    <li>Folder: <strong>KitchenMart-POS-v1.0</strong></li>
+    <li>Subfolder: POS (publish ClientPOS)</li>
+    <li>Subfolder: CloudApi (optional)</li>
+    <li>Subfolder: Logo</li>
+    <li>INSTALL guide (Urdu steps)</li>
+    <li>USER guide (billing, returns, inventory, backup)</li>
+    <li>Credentials envelope (owner + sales passwords)</li>
+    <li>Cloud API key note (agar enabled)</li>
+    <li>Developer support number / WhatsApp</li>
+  </ul>
+
+  <h2>Phase 9 — Client training (1–2 ghante)</h2>
+  <ul class="checklist">
+    <li>Login — owner vs salesman difference</li>
+    <li>Naya bill kaise banayein</li>
+    <li>Barcode scan / search</li>
+    <li>Return process</li>
+    <li>Inventory price / stock update</li>
+    <li>Din ke end par Sales Report</li>
+    <li>Settings sirf owner ke paas</li>
+    <li>Cloud dashboard phone se dekhna (agar diya)</li>
+    <li>Problem par developer se rabta kaise karein</li>
+  </ul>
+
+  <h2>Phase 10 — Backup instructions (client ko sikhana)</h2>
+  <ul class="checklist">
+    <li>SQL Server — BhaiGeePOS database weekly backup</li>
+    <li>Backup file USB / external drive par copy</li>
+    <li><code>appsettings.json</code> ki copy safe rakhein</li>
+    <li>Cloud sync ON ho to cloud par bhi data backup hai</li>
+  </ul>
+
+  <h2>Phase 11 — Business / legal</h2>
+  <ul class="checklist">
+    <li>Delivery note sign — “Installed & tested OK”</li>
+    <li>Payment final / remaining clear</li>
+    <li>Free support period likho (e.g. 30 days bug fix)</li>
+    <li>Us ke baad paid support rate (optional)</li>
+    <li>Scope clear: full internet POS / Firebase abhi included nahi</li>
+  </ul>
+
+  <h2>Phase 12 — Jo abhi included NAHI (client expectations)</h2>
+  <table class="data">
+    <tr><th>Feature</th><th>Status</th></tr>
+    <tr><td>Full POS browser / phone par (Firebase)</td><td>Future project — abhi nahi</td></tr>
+    <tr><td>WhatsApp / SMS auto (bina credentials)</td><td>Settings ready — client API chahiye</td></tr>
+    <tr><td>24/7 free cloud hosting</td><td>Nahi — local API ya paid server</td></tr>
+    <tr><td>Remote access</td><td>AnyDesk / RustDesk alag setup</td></tr>
+  </table>
+
+  <h2>Default logins (sirf pehli dafa — password change ke baad delete)</h2>
+  <table class="data">
+    <tr><th>Role</th><th>Username</th><th>Default (change karo)</th></tr>
+    <tr><td>Owner</td><td>owner</td><td>owner123</td></tr>
+    <tr><td>Salesman</td><td>sales</td><td>sales123</td></tr>
+  </table>
+
+  <h2>Final sign-off</h2>
+  <ul class="checklist">
+    <li>Sari upar wali checklist complete</li>
+    <li>Client ne khud 1 test sale ki</li>
+    <li>Passwords change ho chuke</li>
+    <li>Package USB / PC par copy ho gaya</li>
+    <li>Training complete</li>
+    <li>Payment / delivery note done</li>
+  </ul>
+
+  <div class="sign-row">
+    <div class="sign-box">Developer signature & date</div>
+    <div class="sign-box">Client signature & date</div>
+  </div>
+
+  <div class="footer">
+    KitchenMart.pk POS · Client Delivery Checklist · Generated for handover ·
+    Print: Ctrl+P → Save as PDF
+  </div>
+
+</body>
+</html>

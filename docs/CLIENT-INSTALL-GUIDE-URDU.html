@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>KitchenMart POS — Urdu Install Guide</title>
+  <style>
+    @page { size: A4; margin: 16mm 14mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", Tahoma, Arial, sans-serif;
+      color: #1a2332;
+      line-height: 1.75;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 20px 24px;
+      font-size: 12pt;
+      direction: rtl;
+      text-align: right;
+    }
+    h1 {
+      font-size: 22pt;
+      margin: 0 0 6px;
+      color: #1e3a5f;
+      line-height: 1.35;
+    }
+    .subtitle {
+      color: #5c6b7a;
+      font-size: 11pt;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 14pt;
+      color: #1e3a5f;
+      border-bottom: 2px solid #2f80ed;
+      padding-bottom: 5px;
+      margin: 20px 0 10px;
+      page-break-after: avoid;
+    }
+    .banner {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2f80ed 100%);
+      color: #fff;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 14px 0 18px;
+    }
+    .banner strong { font-size: 13pt; }
+    .note {
+      background: #fff8e6;
+      border-right: 4px solid #e67e22;
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-size: 11pt;
+      border-radius: 0 6px 6px 0;
+    }
+    .ok {
+      background: #eef9f0;
+      border-right: 4px solid #27ae60;
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-size: 11pt;
+      border-radius: 0 6px 6px 0;
+    }
+    ol.steps {
+      padding-right: 22px;
+      margin: 8px 0 14px;
+    }
+    ol.steps li {
+      margin: 8px 0;
+      padding-right: 4px;
+    }
+    table.info {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px;
+      font-size: 11pt;
+    }
+    table.info th, table.info td {
+      border: 1px solid #dbe3ee;
+      padding: 8px 10px;
+      text-align: right;
+      vertical-align: top;
+    }
+    table.info th {
+      background: #1e3a5f;
+      color: #fff;
+      width: 35%;
+    }
+    table.info tr:nth-child(even) { background: #f9fbfd; }
+    code, .ltr {
+      direction: ltr;
+      unicode-bidi: embed;
+      font-family: Consolas, "Segoe UI", monospace;
+      background: #f0f4f8;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10pt;
+    }
+    .footer {
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid #dbe3ee;
+      font-size: 9.5pt;
+      color: #5c6b7a;
+      text-align: center;
+    }
+    ul { margin: 6px 0 12px; padding-right: 22px; }
+    ul li { margin: 5px 0; }
+    @media print {
+      body { padding: 0; }
+      .banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      table.info th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>KitchenMart.pk POS</h1>
+  <div class="subtitle">بھائی گی کروکری — انسٹال گائیڈ (کلائنٹ)</div>
+
+  <div class="banner">
+    <strong>یہ صرف انسٹال پیکج ہے — سورس کوڈ شامل نہیں ہے۔</strong><br />
+    اس فولڈر کو کاپی کریں، <span class="ltr">START-POS.bat</span> چلائیں، اور روزانہ کام شروع کریں۔
+  </div>
+
+  <h2>۱۔ کمپیوٹر کی ضرورت</h2>
+  <table class="info">
+    <tr>
+      <th>ونڈوز</th>
+      <td>Windows 10 یا Windows 11</td>
+    </tr>
+    <tr>
+      <th>ڈیٹا بیس</th>
+      <td>SQL Server LocalDB (عام طور پر پہلے سے ہوتا ہے) یا SQL Express</td>
+    </tr>
+    <tr>
+      <th>.NET Runtime</th>
+      <td>.NET 10 Desktop Runtime — اگر پروگرام نہ کھلے تو انسٹال کریں<br />
+        <span class="ltr">https://dotnet.microsoft.com/download/dotnet/10.0</span></td>
+    </tr>
+    <tr>
+      <th>انٹرنیٹ</th>
+      <td>ضروری نہیں — بلنگ اور انوینٹری آف لائن چلتی ہے</td>
+    </tr>
+  </table>
+
+  <h2>۲۔ پہلی دفعہ انسٹال</h2>
+  <ol class="steps">
+    <li>یہ پورا فولڈر (یا ZIP) دکان کے کمپیوٹر پر کاپی کریں، مثلاً: <span class="ltr">C:\KitchenMart-POS</span></li>
+    <li><strong>POS</strong> فولڈر کھولیں</li>
+    <li><span class="ltr">START-POS.bat</span> پر ڈبل کلک کریں</li>
+    <li>پہلی دفعہ ڈیٹا بیس خود بن جائے گی — تھوڑا وقت لگ سکتا ہے</li>
+    <li>لاگ ان اسکرین آ جائے تو کامیاب انسٹال ہے</li>
+  </ol>
+
+  <div class="note">
+    <strong>نوٹ:</strong> اگر ونڈوز SmartScreen وارننگ دے تو <em>More info → Run anyway</em> منتخب کریں — یہ آپ کے POS سافٹ ویئر کا معمولی پیغام ہے۔
+  </div>
+
+  <h2>۳۔ لاگ ان</h2>
+  <table class="info">
+    <tr>
+      <th>مالک (Owner)</th>
+      <td>صارف نام: <span class="ltr">owner</span><br />پاس ورڈ: ڈیولپر الگ سلپ پر دے گا</td>
+    </tr>
+    <tr>
+      <th>سیلز (Sales)</th>
+      <td>صارف نام: <span class="ltr">sales</span><br />پاس ورڈ: ڈیولپر الگ سلپ پر دے گا</td>
+    </tr>
+  </table>
+  <div class="note">
+    پہلی دفعہ لاگ ان کے بعد Settings سے پاس ورڈ ضرور بدل لیں۔
+  </div>
+
+  <h2>۴۔ روزانہ استعمال</h2>
+  <ul>
+    <li>صبح: <span class="ltr">POS\START-POS.bat</span> سے پروگرام کھولیں</li>
+    <li>بلنگ، واپسی (Returns)، اور اسٹاک (Inventory) یہیں سے کریں</li>
+    <li>شام کو پروگرام معمولی طریقے سے بند کریں</li>
+    <li>پورا فولڈر <strong>ڈیلیٹ نہ کریں</strong> — ڈیٹا اور سیٹنگز یہیں محفوظ ہیں</li>
+  </ul>
+
+  <h2>۵۔ رسید پرنٹر (اختیاری)</h2>
+  <ol class="steps">
+    <li>ونڈوز میں پرنٹر انسٹال کریں</li>
+    <li>POS میں <strong>Settings → Shop Settings</strong> کھولیں</li>
+    <li>Hardware میں پرنٹر کا بالکل وہی نام لکھیں جو ونڈوز میں نظر آتا ہے</li>
+    <li>محفوظ کریں اور ایک ٹیسٹ بل پر پرنٹ چیک کریں</li>
+  </ol>
+
+  <h2>۶۔ کلاؤڈ ڈیش بورڈ (اختیاری)</h2>
+  <p>اگر موبائل یا دوسرے PC سے رپورٹ دیکھنی ہو:</p>
+  <ol class="steps">
+    <li><span class="ltr">CLOUD-API\START-CLOUD-API.bat</span> چلائیں</li>
+    <li>براؤزر میں کھولیں: <span class="ltr">http://localhost:5050</span></li>
+    <li>POS Settings میں Cloud Sync آن کریں (اگر ڈیولپر نے سیٹ کیا ہو)</li>
+  </ol>
+  <div class="ok">
+    کلاؤڈ بند رہے تو بھی POS بلنگ مکمل کام کرتی ہے۔
+  </div>
+
+  <h2>۷۔ بیک اپ</h2>
+  <ul>
+    <li>ہفتے میں ایک بار ڈیولپر سے SQL بیک اپ لینے کا طریقہ پوچھ لیں</li>
+    <li>پورا <span class="ltr">KitchenMart-POS</span> فولڈر USB پر کاپی رکھنا بھی اچھا ہے</li>
+    <li>سیٹنگز کی فائل: <span class="ltr">POS\appsettings.json</span> — محفوظ رکھیں</li>
+  </ul>
+
+  <h2>۸۔ عام مسائل</h2>
+  <table class="info">
+    <tr>
+      <th>پروگرام نہیں کھلتا</th>
+      <td>.NET 10 Desktop Runtime انسٹال کریں</td>
+    </tr>
+    <tr>
+      <th>ڈیٹا بیس ایرر</th>
+      <td>SQL LocalDB / Express دوبارہ انسٹال کریں؛ ڈیولپر سے رابطہ کریں</td>
+    </tr>
+    <tr>
+      <th>پرنٹر نہیں چلتا</th>
+      <td>ونڈوز پرنٹر ٹیسٹ پرنٹ کامیاب ہو؛ Settings میں نام درست لکھیں</td>
+    </tr>
+    <tr>
+      <th>5050 پر کلاؤڈ نہیں</th>
+      <td>پہلے <span class="ltr">START-CLOUD-API.bat</span> چلائیں</td>
+    </tr>
+  </table>
+
+  <h2>۹۔ سپورٹ</h2>
+  <table class="info">
+    <tr>
+      <th>ڈیولپر رابطہ</th>
+      <td>_________________________ &nbsp; / &nbsp; _________________________</td>
+    </tr>
+    <tr>
+      <th>دکان</th>
+      <td>KitchenMart.pk / Bhai Gee Crockery — Sargodha</td>
+    </tr>
+  </table>
+
+  <div class="note">
+    <strong>اہم:</strong> سورس کوڈ، پروجیکٹ فائلیں، یا ڈیولپر بیک اپ کلائنٹ کو نہیں دینا۔ صرف یہ انسٹال پیکج استعمال کریں۔
+  </div>
+
+  <div class="footer">
+    KitchenMart POS — Client Install Guide (Urdu) &nbsp;|&nbsp; Creative Software
+  </div>
+
+</body>
+</html>

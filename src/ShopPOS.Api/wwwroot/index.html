@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e3a5f" />
+  <title>KitchenMart POS — Cloud Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div>
+      <p class="eyebrow">KitchenMart.pk</p>
+      <h1>Cloud Dashboard</h1>
+      <p class="subtitle">Mobile-friendly view of synced POS data</p>
+    </div>
+    <button id="refreshBtn" class="btn primary">Refresh</button>
+  </header>
+
+  <section class="config card">
+    <label>
+      Shop ID
+      <input id="shopId" type="text" value="kitchenmart-sargodha" />
+    </label>
+    <label>
+      API Key
+      <input id="apiKey" type="password" value="kitchenmart-dev-key" />
+    </label>
+  </section>
+
+  <section id="stats" class="stats"></section>
+
+  <section class="card">
+    <div class="section-head">
+      <h2>Recent Sales</h2>
+    </div>
+    <div id="salesList" class="list"></div>
+  </section>
+
+  <section class="card">
+    <div class="section-head">
+      <h2>Inventory</h2>
+    </div>
+    <div id="productsList" class="list"></div>
+  </section>
+
+  <footer class="footer">
+    <p>Data syncs from desktop POS → cloud. Open this page on phone or PC browser.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

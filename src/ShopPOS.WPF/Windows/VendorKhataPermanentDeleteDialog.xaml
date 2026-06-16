@@ -1,0 +1,59 @@
+<Window x:Class="ShopPOS.WPF.Windows.VendorKhataPermanentDeleteDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Permanent Delete"
+        MinWidth="500"
+        MinHeight="240"
+        Width="540"
+        Height="280"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize"
+        Background="White">
+    <Border Margin="28,28,28,32"
+            Padding="28,28,28,32"
+            Background="White"
+            BorderBrush="{StaticResource PrimaryBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            Effect="{StaticResource PremiumShadowEffect}">
+        <Grid MinWidth="440">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Permanent Delete"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource PrimaryBrush}"
+                       Margin="0,0,0,12"/>
+
+            <TextBlock Grid.Row="1"
+                       Text="Warning: Are you sure you want to PERMANENTLY delete the selected entries? This action cannot be undone and will permanently erase this history from the database."
+                       TextWrapping="Wrap"
+                       FontSize="15"
+                       Foreground="{StaticResource TextBrush}"
+                       LineHeight="24"
+                       Margin="0,0,0,24"/>
+
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Content="Cancel"
+                        MinWidth="110"
+                        Margin="0,0,12,0"
+                        Style="{StaticResource NavButtonStyle}"
+                        Click="Cancel_Click"
+                        IsCancel="True"/>
+                <Button Content="Delete Permanently"
+                        MinWidth="160"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="Confirm_Click"
+                        IsDefault="True"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

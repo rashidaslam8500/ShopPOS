@@ -1,0 +1,100 @@
+<UserControl x:Class="ShopPOS.WPF.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <StackPanel Margin="0,0,0,16">
+                <TextBlock Text="Dashboard" FontSize="28" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}"/>
+                <TextBlock Text="Today's overview" Foreground="{StaticResource TextMutedBrush}" FontSize="16"/>
+            </StackPanel>
+
+            <UniformGrid Columns="3" Margin="0,0,0,16">
+                <Border Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <StackPanel>
+                        <TextBlock Text="Today's Sales" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                        <TextBlock Text="{Binding TodayRevenue}" FontSize="24" FontWeight="Bold" Margin="0,8,0,0"/>
+                        <TextBlock Text="{Binding TodayCount}" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <StackPanel>
+                        <TextBlock Text="Today's Expenses" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                        <TextBlock Text="{Binding TodayExpenses}" FontSize="24" FontWeight="Bold" Foreground="#EF4444" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <StackPanel>
+                        <TextBlock Text="Today's Net Profit" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                        <TextBlock Text="{Binding TodayNetProfit}" FontSize="24" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <UniformGrid Columns="4" Margin="0,0,0,16">
+                <Border Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <StackPanel>
+                        <TextBlock Text="Today's Sales" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                        <TextBlock Text="{Binding TodayRevenue}" FontSize="24" FontWeight="Bold" Margin="0,8,0,0"/>
+                        <TextBlock Text="{Binding TodayCount}" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <StackPanel>
+                        <TextBlock Text="Total Products" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                        <TextBlock Text="{Binding TotalProducts}" FontSize="24" FontWeight="Bold" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <StackPanel>
+                        <TextBlock Text="Low Stock" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                        <TextBlock Text="{Binding LowStock}" FontSize="24" FontWeight="Bold" Foreground="#FBBF24" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <StackPanel>
+                        <TextBlock Text="All-Time Net Profit" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                        <TextBlock Text="{Binding AllTimeNetProfit}" FontSize="24" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}" Margin="0,8,0,0"/>
+                        <TextBlock Text="{Binding TotalSales}" Foreground="{StaticResource TextMutedBrush}" FontSize="12"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <DockPanel>
+                        <TextBlock Text="Top Selling Products" DockPanel.Dock="Top" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <ListView ItemsSource="{Binding TopProducts}" BorderThickness="0" Background="Transparent">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="300">
+                                        <TextBlock Text="{Binding ProductName}"/>
+                                        <TextBlock Text="{Binding QuantitySold, StringFormat={}{0} sold}" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Column="1" Style="{StaticResource ElevatedCardBorder}" Padding="20,18" Margin="6">
+                    <DockPanel>
+                        <TextBlock Text="Recent Sales" DockPanel.Dock="Top" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <ListView ItemsSource="{Binding RecentSales}" BorderThickness="0" Background="Transparent">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="300">
+                                        <TextBlock Text="{Binding ReceiptNo}"/>
+                                        <TextBlock Text="{Binding Total, StringFormat=Rs. {0:N0}}" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

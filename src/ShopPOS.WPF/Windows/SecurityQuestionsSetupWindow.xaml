@@ -1,0 +1,100 @@
+<Window x:Class="ShopPOS.WPF.Windows.SecurityQuestionsSetupWindow"
+
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+        Title="Set Up Security Questions"
+
+        MinWidth="520"
+
+        MinHeight="480"
+
+        Width="560"
+
+        Height="520"
+
+        WindowStartupLocation="CenterScreen"
+
+        WindowStyle="SingleBorderWindow"
+
+        ResizeMode="CanResize"
+
+        Background="White">
+
+    <Border Margin="28" Padding="28" BorderBrush="{StaticResource PrimaryBrush}" BorderThickness="1" CornerRadius="10">
+
+        <StackPanel>
+
+            <TextBlock Text="Security Questions Setup"
+
+                       FontSize="22"
+
+                       FontWeight="Bold"
+
+                       Foreground="{StaticResource PrimaryBrush}"
+
+                       Margin="0,0,0,8"/>
+
+            <TextBlock Text="Choose and answer two security questions. These are required for password recovery."
+
+                       TextWrapping="Wrap"
+
+                       Foreground="{StaticResource TextMutedBrush}"
+
+                       Margin="0,0,0,20"/>
+
+
+
+            <TextBlock Text="Security Question 1" Foreground="{StaticResource TextMutedBrush}"/>
+
+            <ComboBox ItemsSource="{Binding AvailableQuestions}"
+
+                      SelectedItem="{Binding SelectedQuestion1}"
+
+                      Margin="0,4,0,12" Padding="8,6" FontSize="15"/>
+
+            <TextBlock Text="Your Answer" Foreground="{StaticResource TextMutedBrush}"/>
+
+            <TextBox x:Name="Answer1Box" Margin="0,4,0,16" Padding="10,8" FontSize="16"/>
+
+
+
+            <TextBlock Text="Security Question 2" Foreground="{StaticResource TextMutedBrush}"/>
+
+            <ComboBox ItemsSource="{Binding AvailableQuestions}"
+
+                      SelectedItem="{Binding SelectedQuestion2}"
+
+                      Margin="0,4,0,12" Padding="8,6" FontSize="15"/>
+
+            <TextBlock Text="Your Answer" Foreground="{StaticResource TextMutedBrush}"/>
+
+            <TextBox x:Name="Answer2Box" Margin="0,4,0,16" Padding="10,8" FontSize="16"/>
+
+
+
+            <TextBlock Text="{Binding StatusMessage}"
+
+                       TextWrapping="Wrap"
+
+                       Margin="0,0,0,12"
+
+                       Visibility="{Binding StatusMessage, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+
+
+            <Button Content="Save Security Questions"
+
+                    Style="{StaticResource PrimaryButtonStyle}"
+
+                    HorizontalAlignment="Left"
+
+                    Click="Save_Click"/>
+
+        </StackPanel>
+
+    </Border>
+
+</Window>
+

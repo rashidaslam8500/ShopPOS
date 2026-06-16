@@ -1,0 +1,146 @@
+<Window x:Class="ShopPOS.WPF.Windows.SplashScreenWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="KitchenMart.pk"
+        WindowStyle="None"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgBrush}"
+        ShowInTaskbar="False"
+        Topmost="True"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <Storyboard x:Key="DeveloperLogoEntranceStoryboard">
+            <DoubleAnimation Storyboard.TargetName="DeveloperLogo"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0"
+                             To="1"
+                             Duration="0:0:0.8">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="DeveloperLogoScale"
+                             Storyboard.TargetProperty="ScaleX"
+                             From="0.5"
+                             To="1"
+                             Duration="0:0:0.8">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="DeveloperLogoScale"
+                             Storyboard.TargetProperty="ScaleY"
+                             From="0.5"
+                             To="1"
+                             Duration="0:0:0.8">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid Margin="40,32">
+        <Viewbox Stretch="Uniform"
+                 StretchDirection="DownOnly"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center"
+                        Width="1300">
+
+            <StackPanel x:Name="MainLogoPanel"
+                        HorizontalAlignment="Center"
+                        Opacity="0"
+                        RenderTransformOrigin="0.5,0.5">
+                <StackPanel.RenderTransform>
+                    <ScaleTransform x:Name="MainLogoScale" ScaleX="0.92" ScaleY="0.92"/>
+                </StackPanel.RenderTransform>
+
+                <Image Source="/Assets/logo.png"
+                       Width="1300"
+                       Stretch="Uniform"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,48"/>
+
+                <TextBlock Text="KitchenMart.pk"
+                           FontSize="84"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource PrimaryBrush}"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"/>
+
+                <TextBlock Text="Bhai Gee Crockery Store"
+                           FontSize="40"
+                           Foreground="{StaticResource TextMutedBrush}"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           Margin="0,20,0,0"/>
+            </StackPanel>
+
+            <StackPanel x:Name="CreditsPanel"
+                        HorizontalAlignment="Center"
+                        Margin="0,72,0,0">
+                <TextBlock x:Name="TypingTextBlock"
+                           FontSize="40"
+                           FontWeight="SemiBold"
+                           Foreground="#B8952E"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           MinHeight="56"/>
+
+                <Image x:Name="DeveloperLogo"
+                       Source="/Assets/Elegance_Developer_Logo.png"
+                       Width="440"
+                       Height="440"
+                       Stretch="Uniform"
+                       HorizontalAlignment="Center"
+                       Margin="0,36,0,0"
+                       Opacity="0"
+                       RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="DeveloperLogoScale" ScaleX="0.5" ScaleY="0.5"/>
+                    </Image.RenderTransform>
+                </Image>
+            </StackPanel>
+            </StackPanel>
+        </Viewbox>
+    </Grid>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="MainLogoScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.92"
+                                     To="1"
+                                     Duration="0:0:1.5">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="MainLogoScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.92"
+                                     To="1"
+                                     Duration="0:0:1.5">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation Storyboard.TargetName="MainLogoPanel"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:1.5">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+</Window>

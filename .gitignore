@@ -1,0 +1,45 @@
+# Build
+[Bb]in/
+[Oo]bj/
+[Bb]uild/
+[Ll]og/
+[Ll]ogs/
+**/[Bb]in/
+**/[Oo]bj/
+
+# Visual Studio / Rider
+.vs/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# NuGet
+*.nupkg
+project.lock.json
+
+# Publish / client packages (binaries)
+release/client-install/
+release/developer-backup/
+release/*.zip
+
+# Secrets
+**/appsettings.Development.json
+**/appsettings.local.json
+*.db
+*.db-shm
+*.db-wal
+
+# Python legacy (not in this branch)
+__pycache__/
+*.pyc
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temp
+*.tmp
+*.log
+*.pdb

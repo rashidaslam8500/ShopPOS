@@ -1,0 +1,53 @@
+KitchenMart.pk POS — Install Guide (Client)
+============================================
+
+SOURCE CODE NAHI HAI — sirf install karke chalao.
+
+Pehli dafa install
+------------------
+1. Is pooray folder ko shop PC par copy karo (e.g. C:\KitchenMart-POS)
+2. Install karo (agar nahi hai):
+   - Windows 10/11
+   - SQL Server LocalDB ya SQL Express
+     Download: https://aka.ms/ssmsfullsetup (SSMS) + SQL Express optional
+   - .NET 10 Desktop Runtime (agar app na khule)
+     Download: https://dotnet.microsoft.com/download/dotnet/10.0
+3. POS folder mein START-POS.bat double-click
+4. Pehli dafa database khud ban jayegi
+
+Login (pehli dafa — developer password change karwa dega)
+-------------------------------------------------------
+Owner:   owner
+Sales:   sales
+(Password developer alag slip par dega — default mat use karo)
+
+Rozana use
+----------
+- START-POS.bat se app kholo
+- Billing, Returns, Inventory — normal kaam
+- Band karte waqt app normal close karo
+
+Cloud dashboard (optional)
+------------------------
+- CLOUD-API folder mein START-CLOUD-API.bat chalao
+- Browser: http://localhost:5050
+- Settings mein Cloud Sync ON karo (developer ne bataya ho to)
+
+Receipt printer
+-------------
+Settings → shop settings → Hardware printer name (Windows printer ka exact naam)
+
+Backup
+------
+Developer se poocho SQL backup kaise lena hai.
+Appsettings ki copy safe rakho.
+
+Support
+-------
+Developer contact: _________________________
+
+IMPORTANT
+---------
+- Source code / project files client ko nahi milay
+- Sirf is install folder par kaam karo
+- Folder delete mat karo — isi mein data + settings hain

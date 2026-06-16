@@ -1,0 +1,40 @@
+<UserControl x:Class="ShopPOS.WPF.Views.TrashView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             HorizontalAlignment="Stretch">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+            <TextBlock Text="Invoice Trash Bin" FontSize="24" FontWeight="Bold"/>
+            <TextBlock Text="Soft-deleted invoices are hidden from Sales Report. Restore or permanently purge with owner authorization."
+                       Foreground="{StaticResource TextMutedBrush}" TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,16,0,0">
+            <Button Content="Bulk Restore" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,12,0"
+                    Command="{Binding BulkRestoreCommand}"/>
+            <Button Content="Permanently Delete" Style="{StaticResource NavButtonStyle}"
+                    Command="{Binding BulkPermanentDeleteCommand}"/>
+            <Button Content="Refresh" Style="{StaticResource NavButtonStyle}" Margin="12,0,0,0"
+                    Command="{Binding LoadCommand}"/>
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="Auto" MinWidth="50">
+                    <DataGridTemplateColumn.Header>
+                        <CheckBox Content="" IsChecked="{Binding DataContext.SelectAll, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=TwoWay}"/>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Receipt #" Binding="{Binding ReceiptNo}" Width="Auto" MinWidth="120"/>
+                <DataGridTextColumn Header="Sale Date" Binding="{Binding SaleDate, StringFormat=g}" Width="Auto" MinWidth="140"/>
+                <DataGridTextColumn Header="Deleted At" Binding="{Binding DeletedAt, StringFormat=g}" Width="Auto" MinWidth="140"/>
+                <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=Rs. {0:N0}}" Width="*" MinWidth="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

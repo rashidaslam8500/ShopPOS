@@ -1,0 +1,194 @@
+<Window x:Class="ShopPOS.WPF.Windows.VendorPurchaseEntryWindow"
+
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+        Title="Create Vendor Purchase Invoice"
+
+        Width="650"
+
+        Height="750"
+
+        MinWidth="560"
+
+        MinHeight="500"
+
+        WindowStartupLocation="CenterScreen"
+
+        WindowStyle="SingleBorderWindow"
+
+        ResizeMode="CanResizeWithGrip"
+
+        Background="White">
+
+    <DockPanel Margin="24">
+
+        <Border DockPanel.Dock="Bottom"
+
+                Padding="0,16,0,0"
+
+                BorderBrush="{StaticResource PrimaryBrush}"
+
+                BorderThickness="0,1,0,0">
+
+            <StackPanel Orientation="Horizontal"
+
+                        HorizontalAlignment="Right">
+
+                <Button Content="Cancel"
+
+                        MinWidth="110"
+
+                        Margin="0,0,12,0"
+
+                        Style="{StaticResource NavButtonStyle}"
+
+                        Click="Cancel_Click"
+
+                        IsCancel="True"/>
+
+                <Button Content="Save Invoice"
+
+                        MinWidth="130"
+
+                        Style="{StaticResource PrimaryButtonStyle}"
+
+                        Click="Save_Click"
+
+                        IsDefault="True"/>
+
+            </StackPanel>
+
+        </Border>
+
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <Border Padding="4,0,4,8"
+
+                    Background="White"
+
+                    BorderBrush="{StaticResource PrimaryBrush}"
+
+                    BorderThickness="1"
+
+                    CornerRadius="8"
+
+                    Effect="{StaticResource PremiumShadowEffect}">
+
+                <StackPanel Margin="24" MinWidth="480">
+
+                    <TextBlock Text="Create Vendor Purchase Invoice"
+
+                               FontSize="20"
+
+                               FontWeight="Bold"
+
+                               Foreground="{StaticResource PrimaryBrush}"/>
+
+                    <TextBlock Text="Record a new purchase, payment, and optional bill hardcopy attachment."
+
+                               Foreground="{StaticResource TextMutedBrush}"
+
+                               TextWrapping="Wrap"
+
+                               Margin="0,8,0,20"/>
+
+
+
+                    <TextBlock Text="Transaction Date" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,4"/>
+
+                    <DatePicker x:Name="DatePicker" Margin="0,0,0,14"/>
+
+
+
+                    <TextBlock Text="Invoice / Bill Number" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,4"/>
+
+                    <TextBox x:Name="InvoiceBox" Margin="0,0,0,14"/>
+
+
+
+                    <Grid Margin="0,0,0,14">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="*"/>
+
+                            <ColumnDefinition Width="16"/>
+
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+
+                            <TextBlock Text="Total Bill (Rs.)" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,4"/>
+
+                            <TextBox x:Name="TotalBillBox"/>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+
+                            <TextBlock Text="Cash Paid (Rs.)" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,4"/>
+
+                            <TextBox x:Name="CashPaidBox"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+
+
+                    <TextBlock Text="Payment Mode" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,4"/>
+
+                    <ComboBox x:Name="PaymentModeBox" Margin="0,0,0,14"/>
+
+
+
+                    <TextBlock Text="Description (Purchased Goods)" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,4"/>
+
+                    <TextBox x:Name="DescriptionBox"
+
+                             MinHeight="72"
+
+                             TextWrapping="Wrap"
+
+                             AcceptsReturn="True"
+
+                             Margin="0,0,0,14"/>
+
+
+
+                    <Button Content="Add Hardcopy of Bill"
+
+                            Style="{StaticResource NavButtonStyle}"
+
+                            HorizontalAlignment="Left"
+
+                            Click="AddHardcopy_Click"
+
+                            Margin="0,0,0,8"/>
+
+                    <TextBlock x:Name="AttachmentStatusText"
+
+                               Text="No bill attachment selected."
+
+                               Foreground="{StaticResource TextMutedBrush}"
+
+                               TextWrapping="Wrap"/>
+
+                </StackPanel>
+
+            </Border>
+
+        </ScrollViewer>
+
+    </DockPanel>
+
+</Window>
+

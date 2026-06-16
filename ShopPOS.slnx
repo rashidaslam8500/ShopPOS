@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ShopPOS.Api/ShopPOS.Api.csproj" />
+    <Project Path="src/ShopPOS.Business/ShopPOS.Business.csproj" />
+    <Project Path="src/ShopPOS.Data/ShopPOS.Data.csproj" />
+    <Project Path="src/ShopPOS.Domain/ShopPOS.Domain.csproj" />
+    <Project Path="src/ShopPOS.WPF/ShopPOS.WPF.csproj" />
+  </Folder>
+</Solution>
