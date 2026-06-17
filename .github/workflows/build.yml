@@ -2,9 +2,9 @@ name: Build ShopPOS
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, production, develop]
   pull_request:
-    branches: [main]
+    branches: [main, production]
 
 jobs:
   build:
